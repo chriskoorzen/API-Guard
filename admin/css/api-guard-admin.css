@@ -1,0 +1,67 @@
+ /* Page */
+div.api_guard.page_body {
+    padding-top: 10px;
+    padding-bottom: 30px;
+}
+div.api_guard.page_body h1 {
+    text-align: center;
+    color: #0099ff;
+}
+
+/* Sub Menus */
+div.api_guard.sub_menu {
+    display: block;
+    background-color: #ffffff;
+    border: 1px solid black;
+    border-radius: 25px;
+    padding: 15px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+div.api_guard.sub_menu h2 {
+    color: #0088ee;
+    margin-top: 0px;
+    padding-left: 3px;
+}
+div.api_guard.sub_menu form {
+    margin: 0px;
+    padding: 0px;
+}
+div.api_guard.sub_menu div.menu_item {
+    display: block;
+    padding: 5px;
+    margin: 0px 0px 8px 3px;
+}
+
+/* Menu Items */
+div.api_guard.menu_item div.boolean_option {
+    vertical-align: middle;
+    margin-bottom: 3px;
+}
+div.api_guard.boolean_option input[type="checkbox"] {
+    display: inline-block;
+    height: 18px;
+    width: 18px;
+}
+div.api_guard.boolean_option label {
+    display: inline-block;
+    /* TODO: Find a way to center label against input! */
+}
+div.api_guard.menu_item p {
+    display: block;
+    font-style: italic;
+    color: #595959;
+    margin: 0px;
+    max-width: 80%;
+    padding-left: 25px;
+    overflow-wrap: break-word;
+    
+}
+div.api_guard.sub_menu input.confirm_button {
+    display: block;
+    height: 30px;
+    width: 110px;
+    margin-left: auto;
+    margin-right: 0px;
+}
+
