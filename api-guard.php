@@ -29,9 +29,15 @@
 if ( ! defined( 'WPINC' ) ) die;
 
 /**
- * Current plugin version.
+ * Load constants used throughout program
  */
-define( 'API_GUARD_VERSION', '1.0.0' );
+require_once plugin_dir_path( __FILE__ ) . 'includes/class-api-guard-constants.php';
+
+/**
+ * The core plugin class that is used to define internationalization,
+ * admin-specific hooks, and public-facing site hooks.
+ */
+require plugin_dir_path( __FILE__ ) . 'includes/class-api-guard.php';
 
 /**
  * Plugin Base Directory
@@ -40,30 +46,27 @@ define( 'API_GUARD_BASE_DIR', __DIR__ );
 
 /**
  * Plugin activation.
- * This action is documented in includes/class-api-guard-activator.php
  */
 function activate_API_Guard() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-api-guard-activator.php';
-	API_Guard_Activator::activate();
+	//require_once plugin_dir_path( __FILE__ ) . 'includes/class-api-guard-activator.php';
+	
+	API_Guard::activation();
+
 }
 
 /**
  * Plugin deactivation.
- * This action is documented in includes/class-api-guard-deactivator.php
  */
 function deactivate_API_Guard() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-api-guard-deactivator.php';
-	API_Guard_Deactivator::deactivate();
+	//require_once plugin_dir_path( __FILE__ ) . 'includes/class-api-guard-deactivator.php';
+	
+	API_Guard::deactivation();
+
 }
 
-// register_activation_hook( __FILE__, 'activate_API_Guard' );
-// register_deactivation_hook( __FILE__, 'deactivate_API_Guard' );
+register_activation_hook( __FILE__, 'activate_API_Guard' );
+register_deactivation_hook( __FILE__, 'deactivate_API_Guard' );
 
-/**
- * The core plugin class that is used to define internationalization,
- * admin-specific hooks, and public-facing site hooks.
- */
-require plugin_dir_path( __FILE__ ) . 'includes/class-api-guard.php';
 
 /**
  * Begins execution of the plugin.
@@ -76,8 +79,9 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-api-guard.php';
  */
 function run_API_Guard() {
 
-	$plugin = new API_Guard();
+	$plugin = new API_Guard( API_Guard_Constants::PLUGIN_NAME, API_Guard_Constants::PLUGIN_VERSION );
 	$plugin->run();
 
 }
+
 run_API_Guard();

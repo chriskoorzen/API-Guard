@@ -8,7 +8,7 @@
     <h2 class="api_guard sub_menu">REST API Settings</h2>
     <form class="api_guard">
         
-        <?php wp_nonce_field( $form_nonce ) ?>
+        <?php // wp_nonce_field( $form_nonce ) ?>
 
         <div class="api_guard menu_item">
             <div class="api_guard boolean_option">

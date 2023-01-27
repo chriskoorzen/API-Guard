@@ -5,8 +5,6 @@ dev/
 
 
 # Unneeded template files
-includes/class-api-guard-activator.php
-includes/class-api-guard-deactivator.php
 includes/class-api-guard-i18n.php
 public/
 languages/
