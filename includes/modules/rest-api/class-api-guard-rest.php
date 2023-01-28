@@ -78,8 +78,8 @@ class API_Guard_REST {
         // REST API settings page
 		add_submenu_page(
 			$this->admin_menu,                  // Parent slug-name
-			__('REST-API Settings', $API_Guard),   // Browser Title Tag
-			__('REST-API Settings', $API_Guard),          // Menu Title Display
+			__('REST-API Settings', $this->$API_Guard),   // Browser Title Tag
+			__('REST-API Settings', $this->$API_Guard),          // Menu Title Display
 			self::auth_load_menu,               // User capabilities required to access this menu
 			'rest-api-settings',                // Unique slug-name to refer to this menu
 			array($this, 'get_admin_settings_page')       // Callback for loading page

@@ -156,7 +156,7 @@ class API_Guard {
 		 */
 		// require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-api-guard-public.php';
 		
-		foreach ( self::registered_modules as $path ) { require( plugin_dir_path( __FILE__ ) . $path  ); }
+		foreach ( self::registered_modules as $path ) { require_once( plugin_dir_path( __FILE__ ) . $path  ); }
 
 
 		$this->loader = new API_Guard_Loader();
@@ -276,6 +276,8 @@ class API_Guard {
 		// Setup module dependencies
 		foreach ( self::registered_modules as $mod_name => $mod_path ) {
 
+			require_once( plugin_dir_path( __FILE__ ) . $mod_path  );
+			
 			$mod_name::activation();
 
 		}
@@ -285,6 +287,8 @@ class API_Guard {
 
 		// Remove module dependencies
 		foreach ( self::registered_modules as $mod_name => $mod_path ) {
+			
+			require_once( plugin_dir_path( __FILE__ ) . $mod_path  );
 
 			$mod_name::deactivation();
 
