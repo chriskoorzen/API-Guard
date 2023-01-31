@@ -14,12 +14,6 @@ class API_Guard_Admin {
 
 	private $registered_modules;
 
-	/**
-	 * Initialize the class and set its properties.
-	 *
-	 * @param      string    $API_Guard       The name of this plugin.
-	 * @param      string    $version         The version of this plugin.
-	 */
 	public function __construct( $API_Guard, $version, $registered_modules ) {
 
 		$this->API_Guard = $API_Guard;
@@ -28,9 +22,6 @@ class API_Guard_Admin {
 
 	}
 
-	/**
-	 * Register the stylesheets for the admin area.
-	 */
 	public function define_admin_style() {
 
 		wp_enqueue_style( 
@@ -42,9 +33,6 @@ class API_Guard_Admin {
 
 	}
 
-	/**
-	 * Register the JavaScript for the admin area.
-	 */
 	public function enqueue_scripts() {
 
 		wp_enqueue_script( 
@@ -56,9 +44,6 @@ class API_Guard_Admin {
 
 	}
 
-	/**
-	 * Register the HTML Markup for the admin area
-	 */
 	public function define_admin_link() {
 	    
 	    // Main Page
@@ -70,27 +55,13 @@ class API_Guard_Admin {
             array($this, 'load_main_ui')
         );
 		
-		// Credit and Info page
-		add_submenu_page(
-			'api-guard-main-menu',              // Parent slug-name
-			__('API Guard Info', $API_Guard),   // Browser Title Tag
-			__('Credits', $API_Guard),          // Menu Title Display
-			self::auth_load_menu,               // User capabilities required to access this menu
-			'api-guard-credits',                // Unique slug-name to refer to this menu
-			'api_guard_load_credits_page'       // Callback for loading page
-		);
 	}
-	
-	/**
-	 * Load the HTML for the admin area when requested
-	 */
+
 	public function load_main_ui() {
 
 		if ( ! current_user_can( self::auth_change_options ) ) {
 			wp_die( 'Admin permissions required to change settings.', 403 );
 		}
-
-		// $form_nonce = $this->admin_form_nonce;
 
 		if ( $_SERVER["REQUEST_METHOD"] == 'POST' ) { 
 			
